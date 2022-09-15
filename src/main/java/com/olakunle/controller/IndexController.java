@@ -32,8 +32,8 @@ public class IndexController {
         Optional<Category> optionalCategory = categoryRepository.findByDescription("American");
         Optional<UnitOfMeasure> optionalUnitOfMeasure = unitOfMeasureRepository.findByDescription("Teaspoon");
 
-        System.out.println("Cat has an Id: " + optionalCategory.get().getId());
-        System.out.println("UOM has an Id: " + optionalUnitOfMeasure.get().getId());
+//        System.out.println("Cat has an Id: " + optionalCategory.get().getId());
+//        System.out.println("UOM has an Id: " + optionalUnitOfMeasure.get().getId());
         return "index";
 
     }
