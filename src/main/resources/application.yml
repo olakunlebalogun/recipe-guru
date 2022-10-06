@@ -10,4 +10,10 @@ spring:
   h2:
     console:
       enabled: true
+
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
 #      spring.jpa.defer-datasource-initialization = true
