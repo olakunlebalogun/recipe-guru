@@ -1,5 +1,7 @@
 package com.olakunle.bootstrap.services;
 
+import com.olakunle.converters.RecipeCommandToRecipe;
+import com.olakunle.converters.RecipeToRecipeCommand;
 import com.olakunle.domain.Recipe;
 import com.olakunle.repositories.RecipeRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,11 +20,17 @@ class RecipeServiceImplTest {
     RecipeServiceImpl recipeService;
     @Mock
     RecipeRepository recipeRepository;
+
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test

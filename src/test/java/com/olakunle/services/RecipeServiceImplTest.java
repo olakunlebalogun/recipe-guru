@@ -2,6 +2,8 @@ package com.olakunle.services;
 
 
 import com.olakunle.bootstrap.services.RecipeServiceImpl;
+import com.olakunle.converters.RecipeCommandToRecipe;
+import com.olakunle.converters.RecipeToRecipeCommand;
 import com.olakunle.domain.Recipe;
 import com.olakunle.repositories.RecipeRepository;
 import org.junit.Before;
@@ -27,12 +29,18 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
