@@ -5,6 +5,7 @@ import com.olakunle.converters.RecipeCommandToRecipe;
 import com.olakunle.converters.RecipeToRecipeCommand;
 import com.olakunle.domain.Recipe;
 import com.olakunle.repositories.RecipeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 @Service
+@Slf4j
 public class RecipeServiceImpl implements RecipeService{
     private final RecipeRepository recipeRepository;
     private final RecipeCommandToRecipe recipeCommandToRecipe;
