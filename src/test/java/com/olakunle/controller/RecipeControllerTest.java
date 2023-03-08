@@ -1,6 +1,6 @@
 package com.olakunle.controller;
 
-import com.olakunle.bootstrap.services.RecipeService;
+import com.olakunle.services.RecipeService;
 import com.olakunle.domain.Recipe;
 import org.junit.Before;
 import org.junit.Test;

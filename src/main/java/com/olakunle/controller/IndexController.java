@@ -1,6 +1,6 @@
 package com.olakunle.controller;
 
-import com.olakunle.bootstrap.services.RecipeService;
+import com.olakunle.services.RecipeService;
 import com.olakunle.domain.Category;
 import com.olakunle.domain.UnitOfMeasure;
 import com.olakunle.repositories.CategoryRepository;
@@ -30,14 +30,10 @@ public class IndexController {
     @RequestMapping({"", "/", "/index"})
     public String getIndexPage(Model model) {
                 log.debug("Getting Index page");
-
         model.addAttribute("recipes", recipeService.getRecipes());
-
         Optional<Category> optionalCategory = categoryRepository.findByDescription("American");
         Optional<UnitOfMeasure> optionalUnitOfMeasure = unitOfMeasureRepository.findByDescription("Teaspoon");
 
-//        System.out.println("Cat has an Id: " + optionalCategory.get().getId());
-//        System.out.println("UOM has an Id: " + optionalUnitOfMeasure.get().getId());
         return "index";
 
     }
