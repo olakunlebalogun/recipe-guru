@@ -13,32 +13,40 @@
 </head>
 <body>
 
-<div class="container-fluid" style="margin-top: 20px">
+<div class="container-fluid" style="margin:20px auto; width: 3000px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-primary">
+            <div class="card">
 
-                <div class="panel-heading">
-                    <h1 class="panel-title">My Recipes!</h1>
+                <div class="card-heading bg-primary">
+                    <h1 class="card-title px-2">My Recipes!</h1>
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="table-responsive" th:if="${not #lists.isEmpty(recipes)}">
                         <table class="table table-hover ">
-                            <thead class="thead-inverse">
+                            <thead class="thead-inverse table-primary">
                             <tr>
                                 <th>ID</th>
                                 <th>Description</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tr th:remove="all">
                                 <td th:text="${recipe.id}">123</td>
                                 <td th:text="${recipe.description}">Tasty Goodnees 1</td>
                                 <td><a href="#">View</a></td>
+                                <td><a href="#">Update</a></td>
+                                <td><a href="#">Delete</a></td>
+
                             </tr>
                             <tr th:remove="all">
                                 <td th:text="${recipe.id}">12333</td>
                                 <td th:text="${recipe.description}">Tasty Goodnees 2</td>
                                 <td><a href="#">View</a></td>
+                                <td><a href="#">Update</a></td>
+                                <td><a href="#">Delete</a></td>
                             </tr>
                             <tr th:each="recipe : ${recipes}">
                                 <td th:text="${recipe.id}">334</td>

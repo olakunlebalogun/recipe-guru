@@ -19,26 +19,26 @@
       <!--/*@thymesVar id="ingredient" type="guru.springframework.commands.IngredientCommand"*/-->
       <form  th:object="${ingredient}" th:action="@{'/recipe/' + ${ingredient.getRecipeId()} + '/ingredient'} " method="post">
         <input type="hidden" th:field="*{id}"/>
-        <div class="panel-group">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h1 class="panel-title">Edit Ingredient Information</h1>
+        <div class="card">
+          <div class="card card-primary">
+            <div class="card-heading">
+              <h1 class="card-title bg-primary px-2">Edit Ingredient Information</h1>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
 
 
               <div class="row">
-                <div class="col-md-3 form-group">
+                <div class="col-md-4 form-group">
                   <label>Description:</label>
                   <input type="text" class="form-control" th:field="*{description}"/>
                 </div>
 
-                <div class="col-md-3 form-group">
+                <div class="col-md-4 form-group">
                   <label>Amount:</label>
                   <input type="number" class="form-control" th:field="*{amount}"/>
                 </div>
 
-                <div class="col-md-3 form-group">
+                <div class="col-md-4 form-group">
                   <label>UOM:</label>
                   <select class="form-control" name="uom.id">
                     <option th:each="uomEach : ${uomList}"
@@ -47,10 +47,13 @@
                             th:text="${uomEach.description}">Each</option>
                   </select>
                 </div>
+                <div class="mt-3">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+
         </div>
       </form>
     </div>
