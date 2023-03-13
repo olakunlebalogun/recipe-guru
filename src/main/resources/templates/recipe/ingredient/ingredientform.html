@@ -13,9 +13,9 @@
 </head>
 <body>
 
-<div class="container-fluid" style="margin-top: 20px">
+<div class="container-fluid" style="margin:20px auto; width: 1200px">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-12 col-md-offset-3">
       <!--/*@thymesVar id="ingredient" type="guru.springframework.commands.IngredientCommand"*/-->
       <form  th:object="${ingredient}" th:action="@{'/recipe/' + ${ingredient.getRecipeId()} + '/ingredient'} " method="post">
         <input type="hidden" th:field="*{id}"/>

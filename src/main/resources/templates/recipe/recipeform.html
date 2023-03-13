@@ -12,9 +12,9 @@
 </head>
 <body>
 <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
-<div class="container-fluid" style="margin:20px auto; width: 3000px">
+<div class="container-fluid" style="margin:20px auto; width: 1200px">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-12 col-md-offset-3">
             <form  th:object="${recipe}" th:action="@{/recipe/}" method="post">
                 <input type="hidden" th:field="*{id}"/>
                 <div class="card">
@@ -59,10 +59,10 @@
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Difficulty:</label>
-                                    <select class=" form-control">
-                                        <option>Easy</option>
-                                        <option>Medium</option>
-                                        <option>Hard</option>
+                                    <select class="form-control" style="accent-color: blue">
+                                        <option style="background-color: blue">Easy</option>
+                                        <option style="background-color: blue">Medium</option>
+                                        <option style="background-color: blue">Hard</option>
                                     </select>
                                 </div>
                             </div>
