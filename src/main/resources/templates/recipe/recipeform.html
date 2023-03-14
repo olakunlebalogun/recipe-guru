@@ -59,10 +59,15 @@
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Difficulty:</label>
-                                    <select class="form-control" style="accent-color: blue">
-                                        <option style="background-color: blue">Easy</option>
-                                        <option style="background-color: blue">Medium</option>
-                                        <option style="background-color: blue">Hard</option>
+                                    <select class="form-control" th:field="*{difficulty}"  style="accent-color: blue">
+                                        <option th:each="difficultyValue : ${T(com.olakunle.domain.enums.Difficulty).values()}"
+                                                th:value="${difficultyValue.name()}"
+                                                th:text="${difficultyValue.name()}">val</option>
+                                    </select>
+                                    <select class="form-control" th:remove="all">
+                                        <option>Easy</option>
+                                        <option>Medium</option>
+                                        <option>Hard</option>
                                     </select>
                                 </div>
                             </div>
