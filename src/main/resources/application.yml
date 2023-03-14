@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:h2:mem:file/data.sql
     username: root
-    password: ola24oluwa
+    password:
     driverClassName: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
@@ -19,3 +19,7 @@ spring:
 #      spring.jpa.defer-datasource-initialization = true
 server:
   port: 9000
+logging:
+  level:
+    com:
+      olakunle: debug
