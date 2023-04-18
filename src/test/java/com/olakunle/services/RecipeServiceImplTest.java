@@ -4,6 +4,7 @@ package com.olakunle.services;
 import com.olakunle.converters.RecipeCommandToRecipe;
 import com.olakunle.converters.RecipeToRecipeCommand;
 import com.olakunle.domain.Recipe;
+import com.olakunle.exceptions.NotFoundException;
 import com.olakunle.repositories.RecipeRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,16 +43,33 @@ public class RecipeServiceImplTest {
         recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
+    @Test(expected = NotFoundException.class)
+    public void getRecipeByIdNotFound() {
+        // given
+        Optional<Recipe> recipe = Optional.empty();
+        //when
+        when(recipeRepository.findById(anyLong())).thenReturn(recipe);
+        // then
+        Recipe returnedRecipe = recipeService.findById(1L);
+
+    }
+
     @Test
+    /**
+     * @apiNote   This tests the recipe by id
+     */
     public void getRecipeByIdTest() throws Exception {
+        // GIVEN
         Recipe recipe = new Recipe();
         recipe.setId(1L);
         Optional<Recipe> recipeOptional = Optional.of(recipe);
 
+        // WHEN
         when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
 
         Recipe recipeReturned = recipeService.findById(1L);
 
+        // THEN
         assertNotNull("Null recipe returned", recipeReturned);
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();

@@ -1,17 +1,16 @@
 package com.olakunle.controller;
 
+import com.olakunle.exceptions.BadRequestException;
+import com.olakunle.exceptions.NotFoundException;
 import com.olakunle.services.RecipeService;
 import com.olakunle.commands.RecipeCommand;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Created by jt on 6/19/17.
@@ -29,6 +28,8 @@ public class RecipeController {
 
     @GetMapping("/{id}/show")
     public String showById(@PathVariable String id, Model model){
+        // My Code
+
         model.addAttribute("recipe", recipeService.findById(Long.valueOf(id)));
         return "recipe/show";
     }
@@ -62,5 +63,27 @@ public class RecipeController {
         return "redirect:/";
     }
 
+
+    @ResponseStatus(HttpStatus.NOT_FOUND) // Note: This has to be added for the testGetRecipeNotFound() in RecipeControllerTest to pass
+    @ExceptionHandler(NotFoundException.class)
+    public ModelAndView handleNotFound(Exception exception){
+        ModelAndView modelAndView = new ModelAndView();
+        log.error("handle not found exception");
+        log.error(exception.getMessage());
+        modelAndView.setViewName("404error");
+        modelAndView.addObject("exception", exception);
+        return modelAndView;
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST) // Note: This has to be added for the testGetRecipeNotFound() in RecipeControllerTest to pass
+    @ExceptionHandler(NumberFormatException.class)
+    public ModelAndView handleNumberFormat(Exception exception){
+        ModelAndView modelAndView = new ModelAndView();
+        log.error("handle number format exception");
+        log.error(exception.getMessage());
+        modelAndView.setViewName("400error");
+        modelAndView.addObject("exception", exception);
+        return modelAndView;
+    }
 
 }
